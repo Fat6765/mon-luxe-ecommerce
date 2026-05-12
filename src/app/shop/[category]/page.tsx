@@ -4,8 +4,17 @@ import { useState, useEffect } from 'react';
 import ProductCard from '@/components/product/ProductCard';
 import { motion } from 'framer-motion';
 
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  description?: string;
+  image: string;
+}
+
 export default function CategoryPage({ params }: { params: { category: string } }) {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Normalize category name for display
@@ -27,7 +36,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
         const res = await fetch('/api/products');
         const data = await res.json();
         // Filter by the specific category requested
-        const filtered = data.filter((p: any) => p.category === dbCategoryName);
+        const filtered = data.filter((p: Product) => p.category === dbCategoryName);
         setProducts(filtered);
       } catch (error) {
         console.error("Failed to fetch products", error);
@@ -55,7 +64,7 @@ export default function CategoryPage({ params }: { params: { category: string } 
         ) : products.length === 0 ? (
           <div className="text-center py-20 bg-muted/30 rounded-2xl border">
             <h3 className="text-xl font-medium mb-2">Aucun produit trouvé</h3>
-            <p className="text-muted-foreground">Nous n'avons pas encore de produits dans la catégorie {dbCategoryName}.</p>
+            <p className="text-muted-foreground">Nous n&apos;avons pas encore de produits dans la catégorie {dbCategoryName}.</p>
           </div>
         ) : (
           <motion.div 

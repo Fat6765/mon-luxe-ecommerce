@@ -6,8 +6,17 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  description?: string;
+  image: string;
+}
+
 function ShopContent() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const query = searchParams.get('q');
@@ -21,7 +30,7 @@ function ShopContent() {
         
         if (query) {
           const lowerQuery = query.toLowerCase();
-          const filtered = data.filter((p: any) => 
+          const filtered = data.filter((p: Product) => 
             p.name.toLowerCase().includes(lowerQuery) || 
             (p.description && p.description.toLowerCase().includes(lowerQuery)) ||
             p.category.toLowerCase().includes(lowerQuery)
@@ -64,7 +73,7 @@ function ShopContent() {
       ) : products.length === 0 ? (
         <div className="text-center py-20 bg-muted/30 rounded-2xl border">
            <h3 className="text-xl font-medium mb-2">Aucun produit trouvé</h3>
-           <p className="text-muted-foreground mb-6">Nous n'avons trouvé aucun résultat pour "{query}".</p>
+           <p className="text-muted-foreground mb-6">Nous n&apos;avons trouvé aucun résultat pour &quot;{query}&quot;.</p>
            <Link href="/shop" className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-all">
             Voir tous les produits
            </Link>

@@ -9,11 +9,20 @@ import ProductCard from '@/components/product/ProductCard';
 
 import { useCartStore } from '@/store/cartStore';
 
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  description?: string;
+  image: string;
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [allProducts, setAllProducts] = useState<any[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const { getTotals, toggleCart } = useCartStore();
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
@@ -35,7 +44,7 @@ export default function Navbar() {
         .then(data => setAllProducts(data))
         .catch(err => console.error(err));
     }
-  }, [isSearchOpen]);
+  }, [isSearchOpen, allProducts.length]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -162,7 +171,7 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <div className="text-center text-muted-foreground py-12">
-                    Aucun produit trouvé pour "{searchQuery}".
+                    Aucun produit trouvé pour &quot;{searchQuery}&quot;.
                   </div>
                 )}
                 
