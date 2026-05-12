@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Soft Elegant Light Palette (Less harsh) */
+    --background: 40 10% 97%; /* Soft Pearl / Off-White */
+    --foreground: 0 0% 15%; /* Elegant Soft Charcoal */
+
+    --card: 0 0% 100%; /* Keep cards slightly whiter to pop against background */
+    --card-foreground: 0 0% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+
+    --primary: 0 0% 12%; /* Very dark gray, not pure black */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 40 10% 92%; /* Soft beige/gray for secondary elements */
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 40 5% 90%; /* Soft muted backgrounds */
+    --muted-foreground: 0 0% 40%; /* Soft gray text */
+
+    --accent: 40 10% 92%;
+    --accent-foreground: 0 0% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 20 20% 25%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground;
+  }
+}
