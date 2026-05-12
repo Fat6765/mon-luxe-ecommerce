@@ -44,7 +44,7 @@ export default function CheckoutPage() {
 
     try {
       // Here we would typically send the data to our backend
-      const response = await fetch('/api/orders', {
+      await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -81,13 +81,13 @@ export default function CheckoutPage() {
           </div>
           <h1 className="text-3xl font-bold mb-4">Commande Confirmée !</h1>
           <p className="text-muted-foreground mb-8">
-            Merci pour votre commande. Vous paierez à la livraison. Nous vous contacterons très prochainement pour confirmer l'expédition.
+            Merci pour votre commande. Vous paierez à la livraison. Nous vous contacterons très prochainement pour confirmer l&apos;expédition.
           </p>
           <Link 
             href="/"
             className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-all inline-block"
           >
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
         </motion.div>
       </div>

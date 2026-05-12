@@ -46,7 +46,7 @@ export async function POST(request: Request) {
       message: 'Commande reçue avec succès',
       order: newOrder
     }, { status: 201 });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

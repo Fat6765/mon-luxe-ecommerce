@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     } else {
       return NextResponse.json({ success: false, error: 'Identifiants incorrects' }, { status: 401 });
     }
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

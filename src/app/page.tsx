@@ -5,8 +5,17 @@ import Hero from '@/components/home/Hero';
 import ProductCard from '@/components/product/ProductCard';
 import Link from 'next/link';
 
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  description?: string;
+  image: string;
+}
+
 export default function Home() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -69,7 +78,7 @@ export default function Home() {
               className="flex-1 bg-background border-none px-6 py-4 rounded-full focus:ring-2 focus:ring-primary outline-none"
             />
             <button className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-all">
-              S'inscrire
+              S&apos;inscrire
             </button>
           </div>
         </div>

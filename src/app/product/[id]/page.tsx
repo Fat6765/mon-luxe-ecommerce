@@ -6,9 +6,21 @@ import { motion } from 'framer-motion';
 import { ShoppingBag, Heart, Share2, ChevronRight } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  description: string;
+  details: string[];
+  sizes: string[];
+  colors: string[];
+  image: string;
+}
+
 // In a real app, we would fetch this by ID. 
 // We mock it here so the demo is fully functional.
-const MOCK_PRODUCTS: Record<string, any> = {
+const MOCK_PRODUCTS: Record<string, Product> = {
   '1': {
     id: '1',
     name: 'Cashmere Blend Overcoat',
